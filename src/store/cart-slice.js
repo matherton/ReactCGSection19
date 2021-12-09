@@ -9,7 +9,8 @@ const cartSlice = createSlice({
   },
   reducers: {
     addItemToCart(state, action) {
-      const item = action.payload;
+      const newItem = action.payload;
+      const existingItem = state.items.find((item) => item.id === newItem.id);
     },
     removeItemFromCart() {},
   },
