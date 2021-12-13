@@ -31,6 +31,7 @@ const cartSlice = createSlice({
         state.items = state.items.filter((item) => item.id !== id);
       } else {
         existingItem.quantiy--;
+        existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
       }
     },
   },
