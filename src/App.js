@@ -32,7 +32,13 @@ function App() {
         throw new Error("Sending cart data failed!!!");
       }
 
-      const responseData = await response.json();
+      dispatch(
+        uiActions.showNotification({
+          status: "success",
+          title: "Success!",
+          message: "Sent Cart data successfully",
+        })
+      );
     };
   }, [cart]);
 
