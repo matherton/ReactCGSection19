@@ -5,6 +5,7 @@ import Cart from "./components/Cart/Cart";
 import Layout from "./components/Layout/Layout";
 import Products from "./components/Shop/Products";
 import { uiActions } from "./store/ui-slice";
+import Notification from "./components/UI/Notification";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,10 +55,13 @@ function App() {
   }, [cart, dispatch]);
 
   return (
-    <Layout>
-      {cartIsVisible && <Cart />}
-      <Products />
-    </Layout>
+    <>
+      <Notification />
+      <Layout>
+        {cartIsVisible && <Cart />}
+        <Products />
+      </Layout>
+    </>
   );
 }
 
