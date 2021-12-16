@@ -10,6 +10,7 @@ function App() {
   const dispatch = useDispatch();
   const cartIsVisible = useSelector((state) => state.ui.cartIsVisible);
   const cart = useSelector((state) => state.cart);
+  const notification = useSelector((state) => state.ui.notification);
 
   useEffect(() => {
     const sendCartData = async () => {
