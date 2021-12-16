@@ -29,7 +29,13 @@ function App() {
       );
 
       if (!response.ok) {
-        throw new Error("Sending cart data failed!!!");
+        dispatch(
+          uiActions.showNotification({
+            status: "error",
+            title: "Error!",
+            message: "Sending cart data failed!!!",
+          })
+        );
       }
 
       dispatch(
