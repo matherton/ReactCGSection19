@@ -56,7 +56,13 @@ function App() {
 
   return (
     <>
-      <Notification />
+      {notification && (
+        <Notification
+          status={notification.status}
+          title={notification.title}
+          message={notification.message}
+        />
+      )}
       <Layout>
         {cartIsVisible && <Cart />}
         <Products />
