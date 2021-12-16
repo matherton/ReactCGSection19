@@ -29,13 +29,7 @@ function App() {
       );
 
       if (!response.ok) {
-        dispatch(
-          uiActions.showNotification({
-            status: "error",
-            title: "Error!",
-            message: "Sending cart data failed!!!",
-          })
-        );
+        throw new Error("Sending cart data failed!!!");
       }
 
       dispatch(
@@ -46,6 +40,16 @@ function App() {
         })
       );
     };
+
+    sendCartData().catch((error) => {
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          title: "Error!",
+          message: "Sending cart data failed!!!",
+        })
+      );
+    });
   }, [cart]);
 
   return (
