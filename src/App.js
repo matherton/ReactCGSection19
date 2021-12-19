@@ -16,15 +16,7 @@ function App() {
   const notification = useSelector((state) => state.ui.notification);
 
   useEffect(() => {
-    const sendCartData = async () => {
-      dispatch(
-        uiActions.showNotification({
-          status: "success",
-          title: "Success!",
-          message: "Sent Cart data successfully",
-        })
-      );
-    };
+    const sendCartData = async () => {};
 
     if (isInitial) {
       isInitial = false;
