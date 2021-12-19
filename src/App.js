@@ -15,14 +15,10 @@ function App() {
   const notification = useSelector((state) => state.ui.notification);
 
   useEffect(() => {
-    const sendCartData = async () => {};
-
     if (isInitial) {
       isInitial = false;
       return;
     }
-
-    sendCartData().catch((error) => {});
   }, [cart, dispatch]);
 
   return (
