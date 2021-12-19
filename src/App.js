@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import Cart from "./components/Cart/Cart";
 import Layout from "./components/Layout/Layout";
 import Products from "./components/Shop/Products";
-import { uiActions } from "./store/ui-slice";
 import Notification from "./components/UI/Notification";
 
 let isInitial = true;
@@ -23,15 +22,7 @@ function App() {
       return;
     }
 
-    sendCartData().catch((error) => {
-      dispatch(
-        uiActions.showNotification({
-          status: "error",
-          title: "Error!",
-          message: "Sending cart data failed!!!",
-        })
-      );
-    });
+    sendCartData().catch((error) => {});
   }, [cart, dispatch]);
 
   return (
