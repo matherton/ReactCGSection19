@@ -1,12 +1,33 @@
 import { uiActions } from "./ui-slice";
+import { cartActions } from "./cart-slice";
 
 export const fetchCartData = () => {
-  return (dispatch) => {
+  return async (dispatch) => {
     const fetchData = async () => {
       const response = await fetch(
         "https://react-http-4b88b-default-rtdb.europe-west1.firebasedatabase.app/cart.json"
       );
+
+      if (!response.ok) {
+        throw new Error("fetching data failed!!!");
+      }
+
+      const data = await response.json();
+
+      return data;
     };
+    try {
+      const cartData = await fetchData();
+      dispatch(cartActions.replaceCart(cartData));
+    } catch (error) {
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          title: "Error!",
+          message: "Fetching cart data failed!!!",
+        })
+      );
+    }
   };
 };
 
